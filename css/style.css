@@ -1,3 +1,18 @@
+ul {
+    list-style: none;
+}
+
+.user-item {
+    overflow: hidden;
+    clear: both;
+}
+
+.user-container {
+    float: left;
+    width: 49%;
+}
+
 .user-moreContainer {
     float: right;
+    width: 49%;
 }

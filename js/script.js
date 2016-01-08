@@ -9,11 +9,11 @@
         var items = [];
 
         $.each( data, function (key, val) {
-            items.push( "<li class='user-item' id='" + key + "'>" +
+            items.push( "<li class='user-item'> <div class='user-container' id='" + key + "'>" +
                 "<div class='user-login'>" + val.login + "</div>" +
                 "<div class='user-admin'>" + val.site_admin + "</div>" +
                 "<img src='" + val.avatar_url + "' class='user-avatar'/>" +
-                "<div href='https://api.github.com/users/" + val.login + "' class='user-more js-more-button'> More Information</div>" +
+                "<div href='https://api.github.com/users/" + val.login + "' class='user-more js-more-button btn btn-primary'> More Information</div></div>" +
                 "<div class='user-moreContainer'></div>" +
                 "</li>" );
         });
@@ -31,7 +31,7 @@
 
         var $button = $(this),
             userLink = $button.attr('href'),
-            moreInfoContainer = $button.siblings('.user-moreContainer');
+            moreInfoContainer = $button.closest('.user-container').siblings('.user-moreContainer');
 
         console.log(moreInfoContainer);
 
@@ -39,8 +39,8 @@
             var items = [];
 
             items.push( "<li class='user-item'>" +
-                "<div class='user-data-followers'>" + data.followers + "</div>" +
-                "<div class='user-data-following'>" + data.following + "</div>" +
+                "<div class='user-data-followers'>Followers: " + data.followers + "</div>" +
+                "<div class='user-data-following'>Following: " + data.following + "</div>" +
                 "</li>" );
 
             $( "<ul/>", {
@@ -51,8 +51,6 @@
         }).fail(function () {
             alert('Json is empty');
         });
-
-
 
     });
 
