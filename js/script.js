@@ -10,10 +10,10 @@
 
         $.each( data, function (key, val) {
             items.push( "<li class='user-item'> <div class='user-container' id='" + key + "'>" +
-                "<div class='user-login'>" + val.login + "</div>" +
-                "<div class='user-admin'>" + val.site_admin + "</div>" +
-                "<img src='" + val.avatar_url + "' class='user-avatar'/>" +
-                "<div href='https://api.github.com/users/" + val.login + "' class='user-more js-more-button btn btn-primary'> More Information</div></div>" +
+                "<img src='" + val.avatar_url + "' class='user-avatar user-container--item'/>" +
+                "<div class='user-login user-container--item'>Name: " + val.login + "</div>" +
+                "<div class='user-admin user-container--item'>Site Admin: " + val.site_admin + "</div>" +
+                "<div href='https://api.github.com/users/" + val.login + "' class='user-more js-more-button btn btn-primary user-container--item'> More Information</div></div>" +
                 "<div class='user-moreContainer'></div>" +
                 "</li>" );
         });
@@ -39,8 +39,8 @@
             var items = [];
 
             items.push( "<li class='user-item'>" +
-                "<div class='user-data-followers'>Followers: " + data.followers + "</div>" +
-                "<div class='user-data-following'>Following: " + data.following + "</div>" +
+                "<div class='user-data-followers user-container--item'>Followers: " + data.followers + "</div>" +
+                "<div class='user-data-following user-container--item'>Following: " + data.following + "</div>" +
                 "</li>" );
 
             $( "<ul/>", {

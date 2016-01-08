@@ -12,7 +12,22 @@ ul {
     width: 49%;
 }
 
+.user-container--item{
+    margin-bottom: 10px;
+}
+
 .user-moreContainer {
     float: right;
     width: 49%;
 }
+
+.user-item {
+    margin-bottom: 20px;
+}
+
+.user-avatar {
+    padding-right: 10px;
+    width: 25%;
+    float: left;
+}
+
