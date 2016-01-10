@@ -1,10 +1,6 @@
 ;(function ($, document) {
     'use strict';
 
-    //var listAllUsersGet = function () {
-    //    return $.get("https://api.github.com/users");
-    //};
-
     $.getJSON( "https://api.github.com/users", function ( data ) {
         var items = [];
 
@@ -13,15 +9,17 @@
                 "<img src='" + val.avatar_url + "' class='user-avatar user-container--item'/>" +
                 "<div class='user-login user-container--item'>Name: " + val.login + "</div>" +
                 "<div class='user-admin user-container--item'>Site Admin: " + val.site_admin + "</div>" +
-                "<div href='https://api.github.com/users/" + val.login + "' class='user-more js-more-button btn btn-primary user-container--item'> More Information</div></div>" +
-                "<div class='user-moreContainer'></div>" +
+                "<a href='https://api.github.com/users/" +
+                val.login +
+                "' class='user-more js-more-button btn btn-primary user-container--item' data-toggle='collapse' data-target='#collapseExample" + key + "'> More Information</a></div>" +
+                "<div class='user-moreContainer' class='collapse' id='collapseExample" + key + "'></div>" +
                 "</li>" );
         });
 
         $( "<ul/>", {
             "class": "user-list",
-            html: items.join( "" )
-        }).appendTo( "body" );
+            html: items.join("")
+        }).appendTo("body");
     }).fail(function () {
         alert('Json is empty');
     });
@@ -31,9 +29,12 @@
 
         var $button = $(this),
             userLink = $button.attr('href'),
-            moreInfoContainer = $button.closest('.user-container').siblings('.user-moreContainer');
+            moreInfoContainer = $button.closest('.user-container').siblings('.user-moreContainer'),
+            infoList = moreInfoContainer.find('.more-info-test');
 
-        console.log(moreInfoContainer);
+        if(infoList.length) {
+            return;
+        }
 
         $.getJSON( userLink , function ( data ) {
             var items = [];
