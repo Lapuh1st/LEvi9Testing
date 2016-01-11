@@ -1,17 +1,24 @@
 ;(function ($, document) {
     'use strict';
 
-    $.getJSON( "https://api.github.com/users", function ( data ) {
+    $.getJSON( "https://api.github.com/users", function (data) {
         var items = [];
 
         $.each( data, function (key, val) {
+
+            if(val.site_admin){
+                val.site_admin = "Admin of github";
+            } else {
+                val.site_admin = "";
+            }
+
             items.push( "<li class='user-item'> <div class='user-container' id='" + key + "'>" +
                 "<img src='" + val.avatar_url + "' class='user-avatar user-container--item'/>" +
-                "<div class='user-login user-container--item'>Name: " + val.login + "</div>" +
-                "<div class='user-admin user-container--item'>Site Admin: " + val.site_admin + "</div>" +
+                "<div class='user-login user-container--item'>Login: " + val.login + "</div>" +
+                "<div class='user-admin user-container--item'>" + val.site_admin + "</div>" +
                 "<a href='https://api.github.com/users/" +
                 val.login +
-                "' class='user-more js-more-button btn btn-primary user-container--item' data-toggle='collapse' data-target='#collapseExample" + key + "'> More Information</a></div>" +
+                "' class='user-more js-more-button btn btn-primary user-container--item' data-toggle='collapse' data-target='#collapseExample" + key + "'> More Information <i class='glyphicon glyphicon-plus'></i></i></a></div>" +
                 "<div class='user-moreContainer' class='collapse' id='collapseExample" + key + "'></div>" +
                 "</li>" );
         });
@@ -24,7 +31,8 @@
         alert('Json is empty');
     });
 
-    $(document).on('click', '.js-more-button', function (event) {
+
+    var uploadMoreInfo = function (event) {
         event.preventDefault();
 
         var $button = $(this),
@@ -39,10 +47,9 @@
         $.getJSON( userLink , function ( data ) {
             var items = [];
 
-            items.push( "<li class='user-item'>" +
-                "<div class='user-data-followers user-container--item'>Followers: " + data.followers + "</div>" +
-                "<div class='user-data-following user-container--item'>Following: " + data.following + "</div>" +
-                "</li>" );
+            items.push(
+                "<li class='user-data-followers user-container--item'>Followers: " + data.followers + "</li>" +
+                "<li class='user-data-following user-container--item'>Following: " + data.following + "</li>");
 
             $( "<ul/>", {
                 "class": "more-info-test",
@@ -52,8 +59,8 @@
         }).fail(function () {
             alert('Json is empty');
         });
+    }
 
-    });
+    $(document).on('click', '.js-more-button', uploadMoreInfo);
 
-
-}($, document));
+}(jQuery, document));
