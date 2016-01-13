@@ -1,42 +1,9 @@
 var dataProvider = function () {
     'use strict';
 
-    var model = "2";
-
     var githubAPI = "https://api.github.com/users?access_token=3bceb316f870c6df7bca05a75a9c643822b18258";
 
-    var setModelData = function (data) {
-        model = data;
-    };
-
-    var httpService = {};
-
     $.getJSON(githubAPI, function (data) {
-        //
-        //console.log(model);
-        //model = 5;
-        //
-        //var items = [];
-        //
-        //$.each( data, function (key, val) {
-        //
-        //    val.site_admin = val.site_admin ? "Admin of github" : "";
-        //
-        //    items.push( "<li class='user-item'> <div class='user-container' id='" + key + "'>" +
-        //        "<img src='" + val.avatar_url + "' class='user-avatar user-container--item'/>" +
-        //        "<div class='user-login user-container--item'>Login: " + val.login + "</div>" +
-        //        "<div class='user-admin user-container--item'>" + val.site_admin + "</div>" +
-        //        "<a href='https://api.github.com/users/" +
-        //        val.login +
-        //        "' class='user-more js-more-button btn btn-primary user-container--item' data-toggle='collapse' data-target='#collapseExample" + key + "'> More Information <i class='glyphicon glyphicon-plus'></i></i></a></div>" +
-        //        "<div class='user-moreContainer' class='collapse' id='collapseExample" + key + "'></div>" +
-        //        "</li>" );
-        //});
-        //
-        //$( "<ul/>", {
-        //    "class": "user-list",
-        //    html: items.join("")
-        //}).appendTo("body");
     }).done(function(data) {
         console.log("second success");
         $('#userList').tmpl(data).appendTo('#main');
@@ -78,7 +45,6 @@ var dataProvider = function () {
 
     $(document).on('click', '.js-more-button', uploadMoreInfo);
 
-    return model
 };
 
 dataProvider();
