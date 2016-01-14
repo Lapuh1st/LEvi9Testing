@@ -9,14 +9,29 @@
 <body>
 
     <h1 class="page-title">levi9 academy</h1>
-    <div id="main"></div>
+    <ul id="main" class="user-list"></ul>
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
     <script src="js/script.js"></script>
     <script id="userList" type="text/x-jquery-tmpl">
-        <h1>${site_admin}</h1>
+        <li class="user-item">
+            <div class="user-info">
+                <img class="user-image" src="${avatar_url}">
+                <h2 class="user-login">${login}</h2>
+                <h3 class="user-admin">${site_admin}</h3>
+                <a class="user-link" href="${html_url}" target="_blank">Go to user page</a>
+                <button class="btn btn-primary user-button js-more-button" data-user-login="${login}" data-toggle="collapse" data-target="#${login}-collapsed-panel">More Info</button>
+            </div>
+            <ul class="user-more-info collapse" id="${login}-collapsed-panel">
+                <img class="user-preloader" src="images/preloader.gif">
+            </ul>
+        </li>
+    </script>
+    <script id="userMoreInfo" type="text/x-jquery-tmpl">
+        <li class="user-moreInfoItem">User Followers: ${followers}</li>
+        <li class="user-moreInfoItem">User followeing:  ${following}</li>
     </script>
 </body>
 </html>

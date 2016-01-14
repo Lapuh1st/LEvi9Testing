@@ -1,69 +1,43 @@
 ul {
-    list-style: none
+    list-style: none;
+    padding-left: 0;
 }
 
 .page-title {
     font-family: monospace;
     text-align: center;
 }
+
 .user-item {
     overflow: hidden;
-    clear: both;
+    width: 50%;
+    margin-bottom: 10px;
 }
 
-.user-container {
+.user-info {
     position: relative;
     overflow: hidden;
-    width: 75%;
-    padding: 10px;
-    border: 1px solid #2e6da4;
-    margin-bottom: 10px;
-    border-radius: 4px;
 }
 
-.user-container--item{
-    margin-bottom: 10px;
-}
-
-.user-moreContainer {
-    width: 75%;
-}
-
-.user-item {
+.user-image {
     float: left;
-    width: 50%;
-}
-
-.user-avatar {
+    width: 25%;
     padding-right: 10px;
-    width: 50%;
-    float: left;
 }
 
-.user-more {
+.user-button {
     position: absolute;
-    bottom: 10px;
+    bottom: 0;
+}
+
+.user-preloader {
+    max-height: 100px;
+}
+
+.user-moreInfoItem {
+    padding: 10px 15px 10px 20px;
 }
 
 @media (max-width: 867px) {
-    .user-list {
-        margin: 0;
-        padding: 0;
-    }
 
-    .user-avatar {
-        width: 50%;
-    }
-
-    .user-item {
-        width: 100%;
-    }
-
-    .user-container {
-        width: 100%;
-    }
-
-    .user-moreContainer {
-        width: 100%;
-    }
 }
